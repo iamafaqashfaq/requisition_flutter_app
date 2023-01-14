@@ -15,7 +15,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Requisition App',
       debugShowCheckedModeBanner: false,
-      theme: FlexThemeData.light(scheme: FlexScheme.blue),
+      theme: FlexThemeData.light(
+        scheme: FlexScheme.blue,
+      ),
       darkTheme: FlexThemeData.dark(
         scheme: FlexScheme.bigStone,
       ),

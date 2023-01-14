@@ -81,6 +81,34 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
     return Scaffold(
+      bottomNavigationBar: BottomAppBar(
+        shape: CircularNotchedRectangle(),
+        clipBehavior: Clip.none,
+        color: themeData.colorScheme.onSecondary.withOpacity(0.2),
+        notchMargin: 0,
+        elevation: 4,
+        child: Container(
+          height: 50,
+        ),
+      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   elevation: 12,
+      //   currentIndex: _currentIndex,
+      //   backgroundColor: themeData.colorScheme.surface,
+      //   selectedIconTheme: IconThemeData(color: themeData.primaryColor),
+      //   selectedItemColor: themeData.primaryColor,
+      //   unselectedIconTheme:
+      //       IconThemeData(color: themeData.colorScheme.onBackground),
+      //   unselectedItemColor: themeData.colorScheme.onBackground,
+      //   onTap: onTapped,
+      //   items: const [
+      //     BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'CHAT'),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.call),
+      //       label: 'CALL',
+      //     )
+      //   ],
+      // ),
       appBar: AppBar(
         leading: Icon(
           MdiIcons.menu,
@@ -107,110 +135,112 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
       ),
       body: Opacity(
         opacity: _contentOpacity,
-        child: Stack(
-          children: [
-            TabBarView(
-              controller: _tabController,
-              children: const <Widget>[
-                AdminDashboardGrid(),
-                AdminProfileHome(),
-              ],
-            ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Container(
-                padding: Spacing.all(16),
-                child: PhysicalModel(
-                  color: themeData.backgroundColor,
-                  elevation: 12,
-                  borderRadius: Shape.circular(16),
-                  shadowColor: themeData.colorScheme.primary.withOpacity(0.6),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: themeData.backgroundColor,
-                      borderRadius: Shape.circular(16),
-                    ),
-                    padding: Spacing.vertical(12),
-                    child: TabBar(
-                      controller: _tabController,
-                      indicator: const BoxDecoration(),
-                      indicatorSize: TabBarIndicatorSize.tab,
-                      // indicatorColor: AppTheme.customTheme.groceryPrimary,
-                      tabs: <Widget>[
-                        Container(
-                          child: (_currentIndex == 0)
-                              ? Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    Text(
-                                      "Home",
-                                      style: AppTheme.getTextStyle(
-                                          themeData.textTheme.titleMedium,
-                                          fontWeight: 600,
-                                          color: themeData.colorScheme.primary),
-                                    ),
-                                    Container(
-                                      margin: Spacing.top(6),
-                                      decoration: BoxDecoration(
-                                        color: themeData.colorScheme.primary,
-                                        borderRadius: const BorderRadius.all(
-                                          Radius.circular(2.5),
-                                        ),
-                                      ),
-                                      height: 5,
-                                      width: 5,
-                                    )
-                                  ],
-                                )
-                              : Icon(
-                                  MdiIcons.home,
-                                  size: 20,
-                                  color: Theme.of(context).colorScheme.primary,
-                                ),
-                        ),
-                        Container(
-                            child: (_currentIndex == 1)
-                                ? Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: <Widget>[
-                                      Text(
-                                        "Profile",
-                                        style: AppTheme.getTextStyle(
-                                          themeData.textTheme.titleMedium,
-                                          fontWeight: 600,
-                                          color: themeData.colorScheme.primary,
-                                        ),
-                                      ),
-                                      Container(
-                                        margin: Spacing.top(6),
-                                        decoration: BoxDecoration(
-                                          color: themeData.primaryColor,
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(2.5),
-                                          ),
-                                        ),
-                                        height: 5,
-                                        width: 5,
-                                      )
-                                    ],
-                                  )
-                                : Icon(
-                                    MdiIcons.account,
-                                    size: 20,
-                                    color: themeData.primaryColor,
-                                  )),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
+        child: Container(
+            child:
+                _currentIndex == 0 ? AdminDashboardGrid() : AdminProfileHome()),
+        // child: Stack(
+        // children: [
+        // TabBarView(
+        //   controller: _tabController,
+        //   children: const <Widget>[
+
+        //   ],
+        // ),
+        // Positioned(
+        //   bottom: 0,
+        //   left: 0,
+        //   right: 0,
+        //   child: Container(
+        //     padding: Spacing.all(16),
+        //     child: PhysicalModel(
+        //       color: themeData.backgroundColor,
+        //       elevation: 12,
+        //       borderRadius: Shape.circular(16),
+        //       shadowColor: themeData.colorScheme.primary.withOpacity(0.6),
+        //       child: Container(
+        //         decoration: BoxDecoration(
+        //           color: themeData.backgroundColor,
+        //           borderRadius: Shape.circular(16),
+        //         ),
+        //         padding: Spacing.vertical(12),
+        //         child: TabBar(
+        //           controller: _tabController,
+        //           indicator: const BoxDecoration(),
+        //           indicatorSize: TabBarIndicatorSize.tab,
+        //           // indicatorColor: AppTheme.customTheme.groceryPrimary,
+        //           tabs: <Widget>[
+        //             Container(
+        //               child: (_currentIndex == 0)
+        //                   ? Column(
+        //                       mainAxisSize: MainAxisSize.min,
+        //                       children: <Widget>[
+        //                         Text(
+        //                           "Home",
+        //                           style: AppTheme.getTextStyle(
+        //                               themeData.textTheme.titleMedium,
+        //                               fontWeight: 600,
+        //                               color: themeData.colorScheme.primary),
+        //                         ),
+        //                         Container(
+        //                           margin: Spacing.top(6),
+        //                           decoration: BoxDecoration(
+        //                             color: themeData.colorScheme.primary,
+        //                             borderRadius: const BorderRadius.all(
+        //                               Radius.circular(2.5),
+        //                             ),
+        //                           ),
+        //                           height: 5,
+        //                           width: 5,
+        //                         )
+        //                       ],
+        //                     )
+        //                   : Icon(
+        //                       MdiIcons.home,
+        //                       size: 20,
+        //                       color: Theme.of(context).colorScheme.primary,
+        //                     ),
+        //             ),
+        //             Container(
+        //                 child: (_currentIndex == 1)
+        //                     ? Column(
+        //                         mainAxisSize: MainAxisSize.min,
+        //                         children: <Widget>[
+        //                           Text(
+        //                             "Profile",
+        //                             style: AppTheme.getTextStyle(
+        //                               themeData.textTheme.titleMedium,
+        //                               fontWeight: 600,
+        //                               color: themeData.colorScheme.primary,
+        //                             ),
+        //                           ),
+        //                           Container(
+        //                             margin: Spacing.top(6),
+        //                             decoration: BoxDecoration(
+        //                               color: themeData.primaryColor,
+        //                               borderRadius: const BorderRadius.all(
+        //                                 Radius.circular(2.5),
+        //                               ),
+        //                             ),
+        //                             height: 5,
+        //                             width: 5,
+        //                           )
+        //                         ],
+        //                       )
+        //                     : Icon(
+        //                         MdiIcons.account,
+        //                         size: 20,
+        //                         color: themeData.primaryColor,
+        //                       )),
+        //           ],
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // )
+        // ],
+        // ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: Column(
         mainAxisSize: MainAxisSize.min,
         children: List.generate(
@@ -231,12 +261,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
                     Container(
                       padding: Spacing.xy(8, 4),
                       margin: const EdgeInsets.only(right: 4),
-                      color: themeData.colorScheme.secondary,
+                      // color: themeData.colorScheme.secondary,
                       child: Text(
                         iconsText[index],
                         style: AppTheme.getTextStyle(
                             themeData.textTheme.titleMedium,
-                            color: themeData.colorScheme.onSecondary,
+                            color: themeData.colorScheme.onBackground,
                             fontWeight: 500,
                             letterSpacing: 0.2),
                       ),
