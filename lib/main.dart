@@ -19,9 +19,9 @@ class MyApp extends StatelessWidget {
         scheme: FlexScheme.blue,
       ),
       darkTheme: FlexThemeData.dark(
-        scheme: FlexScheme.bigStone,
+        scheme: FlexScheme.greyLaw,
       ),
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       home: const SplashScreenView(),
     );
   }

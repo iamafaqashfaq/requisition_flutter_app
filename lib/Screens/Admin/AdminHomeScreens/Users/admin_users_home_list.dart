@@ -6,10 +6,10 @@ class AdminUsersHomeList extends StatelessWidget {
   const AdminUsersHomeList({super.key});
 
   static final List<Contact> _contactList = [
-    Contact("Zahra Tate", "+1 987456321"),
-    Contact("Willard Palmer", "+4 154789632"),
-    Contact("Charlotte Small", "+1 521478963"),
-    Contact("Stanley Lindsey", "+18 123654789"),
+    Contact("Zahra Tate", "Actor"),
+    Contact("Willard Palmer", "Director"),
+    Contact("Charlotte Small", "Producer"),
+    Contact("Stanley Lindsey", "Staff"),
     Contact("Ebony Bowman", "+4 987456321"),
     Contact("Rosa Lloyd", "+91 789456321"),
     Contact("Shane Roman", "+1 147852369"),

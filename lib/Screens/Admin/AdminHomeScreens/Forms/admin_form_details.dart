@@ -20,153 +20,99 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
 
   addFormFieldWidget() {
     formFieldWidgets.add(
-      Container(
-        margin: Spacing.only(
-          top: 8,
-          bottom: 8,
-        ),
-        padding: Spacing.only(
-          top: 16,
-          bottom: 16,
-          left: 8,
-          right: 8,
-        ),
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-            borderRadius: BorderRadius.circular(12)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Question:",
-              style: AppTheme.getTextStyle(
-                themeData.textTheme.titleMedium,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: TextFormField(
-                maxLines: 4,
-                style: AppTheme.getTextStyle(
-                    Theme.of(context).textTheme.bodyText1,
-                    letterSpacing: 0.1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: 500),
-                decoration: InputDecoration(
-                  // contentPadding: const EdgeInsets.all(0),
-                  isDense: true,
-                  hintText: "Enter Question Here",
-                  hintStyle: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.subtitle2,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  filled: true,
-                  fillColor:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  prefixIcon: Icon(
-                    Icons.question_mark,
-                    size: MySize.size30,
-                  ),
-                ),
-                keyboardType: TextInputType.text,
-                textCapitalization: TextCapitalization.sentences,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Answer Label (Optional):",
+      Card(
+        child: Container(
+          margin: Spacing.only(
+            top: 8,
+            bottom: 8,
+          ),
+          padding: Spacing.only(
+            top: 16,
+            bottom: 16,
+            left: 8,
+            right: 8,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Question:",
                 style: AppTheme.getTextStyle(
                   themeData.textTheme.titleMedium,
                 ),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: TextFormField(
-                style: AppTheme.getTextStyle(
-                    Theme.of(context).textTheme.bodyText1,
-                    letterSpacing: 0.1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: 500),
-                decoration: InputDecoration(
-                  hintText: "Answer Label",
-                  hintStyle: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.subtitle2,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  filled: true,
-                  fillColor:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  prefixIcon: const Icon(
-                    MdiIcons.label,
+              Container(
+                margin: EdgeInsets.only(top: MySize.size16!),
+                child: TextFormField(
+                  maxLines: 4,
+                  decoration: InputDecoration(
+                    labelText: "Enter Question Here",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                    prefixIcon: const Icon(
+                      Icons.question_mark,
+                    ),
                   ),
-                  contentPadding: const EdgeInsets.all(0),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                textCapitalization: TextCapitalization.sentences,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Answer Type:",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.titleMedium,
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                borderRadius: BorderRadius.circular(
-                  12,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  "Answer Label (Optional):",
+                  style: AppTheme.getTextStyle(
+                    themeData.textTheme.titleMedium,
+                  ),
                 ),
               ),
-              child: DropdownButton(
-                  isExpanded: true,
-                  items: dataTypes
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
-                          ))
-                      .toList(),
-                  onChanged: (value) {}),
-            )
-          ],
+              Container(
+                margin: EdgeInsets.only(top: MySize.size16!),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Answer Label",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                    prefixIcon: const Icon(
+                      MdiIcons.label,
+                    ),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  "Answer Type:",
+                  style: AppTheme.getTextStyle(
+                    themeData.textTheme.titleMedium,
+                  ),
+                ),
+              ),
+              Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black87,
+                    ),
+                  ),
+                ),
+                child: DropdownButton(
+                    isExpanded: true,
+                    items: dataTypes
+                        .map((e) => DropdownMenuItem(
+                              value: e,
+                              child: Text(e),
+                            ))
+                        .toList(),
+                    onChanged: (value) {}),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -229,44 +175,16 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                 initialValue:
                     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
                 maxLines: 4,
-                style: AppTheme.getTextStyle(
-                    Theme.of(context).textTheme.bodyText1,
-                    letterSpacing: 0.1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: 500),
                 decoration: InputDecoration(
-                  // contentPadding: const EdgeInsets.all(0),
-                  isDense: true,
-                  hintText: "Description",
-                  hintStyle: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.subtitle2,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  filled: true,
-                  fillColor:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                  labelText: "Description",
+                  border: Theme.of(context).inputDecorationTheme.border,
+                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
+                  focusedBorder:
+                      Theme.of(context).inputDecorationTheme.focusedBorder,
                   prefixIcon: const Icon(
-                    MdiIcons.formatBold,
+                    MdiIcons.formTextarea,
                   ),
                 ),
-                keyboardType: TextInputType.emailAddress,
-                textCapitalization: TextCapitalization.sentences,
               ),
             ),
             Row(
@@ -278,9 +196,9 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                     themeData.textTheme.bodyLarge,
                   ),
                 ),
-                IconButton(
-                  onPressed: addFormFieldWidget,
-                  icon: const Icon(
+                const IconButton(
+                  onPressed: null,
+                  icon: Icon(
                     MdiIcons.plusCircle,
                   ),
                 )
@@ -294,8 +212,7 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                 right: 8,
               ),
               decoration: BoxDecoration(
-                  color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
+                  color: Colors.grey.shade200,
                   borderRadius: BorderRadius.circular(12)),
               child: Text(
                 "This form is not attached to any project yet!",
@@ -327,319 +244,102 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                 )
               ],
             ),
-            Container(
-              margin: Spacing.only(
-                top: 8,
-                bottom: 8,
-              ),
-              padding: Spacing.only(
-                top: 16,
-                bottom: 16,
-                left: 8,
-                right: 8,
-              ),
-              decoration: BoxDecoration(
-                  color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Question:",
-                    style: AppTheme.getTextStyle(
-                      themeData.textTheme.titleMedium,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: MySize.size16!),
-                    child: TextFormField(
-                      initialValue: "Where did you found about this project?",
-                      maxLines: 4,
+            Card(
+              child: Container(
+                margin: Spacing.only(
+                  top: 8,
+                  bottom: 8,
+                ),
+                padding: Spacing.only(
+                  top: 16,
+                  bottom: 16,
+                  left: 8,
+                  right: 8,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "Question:",
                       style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        // contentPadding: const EdgeInsets.all(0),
-                        isDense: true,
-                        hintText: "Enter Question Here",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: Icon(
-                          Icons.question_mark,
-                          size: MySize.size30,
+                        themeData.textTheme.titleMedium,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(top: MySize.size16!),
+                      child: TextFormField(
+                        initialValue: "Where did you found about this project?",
+                        maxLines: 4,
+                        decoration: InputDecoration(
+                          labelText: "Enter Question Here",
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          enabledBorder:
+                              Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder: Theme.of(context)
+                              .inputDecorationTheme
+                              .focusedBorder,
+                          prefixIcon: const Icon(
+                            Icons.question_mark,
+                          ),
                         ),
                       ),
-                      keyboardType: TextInputType.text,
-                      textCapitalization: TextCapitalization.sentences,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "Answer Label (Optional):",
-                      style: AppTheme.getTextStyle(
-                        themeData.textTheme.titleMedium,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: MySize.size16!),
-                    child: TextFormField(
-                      style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        hintText: "Answer Label",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: const Icon(
-                          MdiIcons.label,
-                        ),
-                        contentPadding: const EdgeInsets.all(0),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      textCapitalization: TextCapitalization.sentences,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "Answer Type:",
-                      style: AppTheme.getTextStyle(
-                        themeData.textTheme.titleMedium,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(
-                        12,
-                      ),
-                    ),
-                    child: DropdownButton(
-                        isExpanded: true,
-                        items: dataTypes
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e),
-                                ))
-                            .toList(),
-                        onChanged: (value) {}),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              margin: Spacing.only(
-                top: 8,
-                bottom: 8,
-              ),
-              padding: Spacing.only(
-                top: 16,
-                bottom: 16,
-                left: 8,
-                right: 8,
-              ),
-              decoration: BoxDecoration(
-                  color:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  borderRadius: BorderRadius.circular(12)),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Question:",
-                    style: AppTheme.getTextStyle(
-                      themeData.textTheme.titleMedium,
-                    ),
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(top: MySize.size16!),
-                    child: TextFormField(
-                      initialValue:
-                          "Have you worked before on a similar project?",
-                      maxLines: 4,
-                      style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        // contentPadding: const EdgeInsets.all(0),
-                        isDense: true,
-                        hintText: "Enter Question Here",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: Icon(
-                          Icons.question_mark,
-                          size: MySize.size30,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        "Answer Label (Optional):",
+                        style: AppTheme.getTextStyle(
+                          themeData.textTheme.titleMedium,
                         ),
                       ),
-                      keyboardType: TextInputType.text,
-                      textCapitalization: TextCapitalization.sentences,
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "Answer Label (Optional):",
-                      style: AppTheme.getTextStyle(
-                        themeData.textTheme.titleMedium,
-                      ),
-                    ),
-                  ),
-                  TextFormField(
-                    initialValue: "Yes/No",
-                    style: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.bodyText1,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    decoration: InputDecoration(
-                      hintText: "Answer Label",
-                      hintStyle: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.subtitle2,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+                    Container(
+                      margin: EdgeInsets.only(top: MySize.size16!),
+                      child: TextFormField(
+                        decoration: InputDecoration(
+                          labelText: "Answer Label",
+                          border: Theme.of(context).inputDecorationTheme.border,
+                          enabledBorder:
+                              Theme.of(context).inputDecorationTheme.border,
+                          focusedBorder: Theme.of(context)
+                              .inputDecorationTheme
+                              .focusedBorder,
+                          prefixIcon: const Icon(
+                            MdiIcons.label,
                           ),
-                          borderSide: BorderSide.none),
-                      enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Text(
+                        "Answer Type:",
+                        style: AppTheme.getTextStyle(
+                          themeData.textTheme.titleMedium,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: Colors.black87,
                           ),
-                          borderSide: BorderSide.none),
-                      focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
-                      prefixIcon: const Icon(
-                        MdiIcons.label,
+                        ),
                       ),
-                      contentPadding: const EdgeInsets.all(0),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                    textCapitalization: TextCapitalization.sentences,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      "Answer Type:",
-                      style: AppTheme.getTextStyle(
-                        themeData.textTheme.titleMedium,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(
-                        12,
-                      ),
-                    ),
-                    child: DropdownButton(
-                        isExpanded: true,
-                        items: dataTypes
-                            .map((e) => DropdownMenuItem(
-                                  value: e,
-                                  child: Text(e),
-                                ))
-                            .toList(),
-                        onChanged: (value) {}),
-                  )
-                ],
+                      child: DropdownButton(
+                          isExpanded: true,
+                          items: dataTypes
+                              .map((e) => DropdownMenuItem(
+                                    value: e,
+                                    child: Text(e),
+                                  ))
+                              .toList(),
+                          onChanged: (value) {}),
+                    )
+                  ],
+                ),
               ),
             ),
             ...formFieldWidgets,

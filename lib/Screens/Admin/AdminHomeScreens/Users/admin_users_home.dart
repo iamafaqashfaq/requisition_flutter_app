@@ -4,7 +4,6 @@ import 'package:requisition_app/CustomWidgets/sizeconfig.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_create.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_home_list.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_request_list.dart';
-import 'package:requisition_app/Utils/app_theme.dart';
 
 class AdminUsersHome extends StatefulWidget {
   const AdminUsersHome({super.key});
@@ -63,125 +62,148 @@ class _AdminUsersHomeState extends State<AdminUsersHome>
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Users",
-          style: AppTheme.getTextStyle(
-            Theme.of(context).textTheme.titleLarge,
-            color: Theme.of(context).colorScheme.onPrimary,
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     onPressed: () => Navigator.pop(context),
+      //     icon: Icon(
+      //       Icons.arrow_back_ios,
+      //       color: themeData.colorScheme.primary,
+      //     ),
+      //   ),
+      //   // title: Text(
+      //   //   "Users",
+      //   //   style: AppTheme.getTextStyle(
+      //   //     Theme.of(context).textTheme.titleLarge,
+      //   //     color: Theme.of(context).colorScheme.onPrimary,
+      //   //   ),
+      //   // ),
+      //   title: Card(
+      //     elevation: 3,
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.circular(10),
+      //     ),
+      //     child: Container(
+      //       padding: Spacing.xy(12, 8),
+      //       child: Padding(
+      //         padding: Spacing.fromLTRB(16, 0, 8, 0),
+      //         child: const TextField(
+      //           decoration: InputDecoration(
+      //             hintText: "Search here",
+      //             fillColor: Colors.transparent,
+      //             border: InputBorder.none,
+      //             focusedBorder: InputBorder.none,
+      //             enabledBorder: InputBorder.none,
+      //             disabledBorder: InputBorder.none,
+      //             errorBorder: InputBorder.none,
+      //             focusedErrorBorder: InputBorder.none,
+      //             isDense: true,
+      //           ),
+      //         ),
+      //       ),
+      //     ),
+      //   ),
+      //   backgroundColor: Colors.transparent,
+      //   actions: [
+      //     IconButton(
+      //       onPressed: () => Navigator.push(
+      //           context,
+      //           MaterialPageRoute(
+      //               builder: (context) => const AdminUsersCreate())),
+      //       icon: Icon(
+      //         MdiIcons.plusCircle,
+      //         color: themeData.colorScheme.primary,
+      //       ),
+      //     ),
+      //   ],
+      // ),
+      bottomNavigationBar: BottomNavigationBar(
+        elevation: 12,
+        currentIndex: _currentIndex,
+        backgroundColor: themeData.colorScheme.surface,
+        selectedIconTheme: IconThemeData(color: themeData.primaryColor),
+        selectedItemColor: themeData.primaryColor,
+        unselectedIconTheme:
+            IconThemeData(color: themeData.colorScheme.onBackground),
+        unselectedItemColor: themeData.colorScheme.onBackground,
+        onTap: onTapped,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(MdiIcons.account),
+            label: 'Users',
           ),
-        ),
-        backgroundColor: themeData.colorScheme.primary,
-        actions: [
-          IconButton(
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AdminUsersCreate())),
-            icon: const Icon(MdiIcons.plusCircle),
-          ),
+          BottomNavigationBarItem(
+            icon: Icon(MdiIcons.accountClock),
+            label: 'Requests',
+          )
         ],
       ),
       body: Stack(
         children: [
-          TabBarView(
-            controller: _tabController,
-            children: const <Widget>[
-              AdminUsersHomeList(),
-              AdminUsersRequestList()
-            ],
+          Container(
+            margin: Spacing.top(100),
+            child: _currentIndex == 0
+                ? const AdminUsersHomeList()
+                : const AdminUsersRequestList(),
           ),
           Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              padding: Spacing.all(16),
-              child: PhysicalModel(
-                color: themeData.backgroundColor,
-                elevation: 12,
-                borderRadius: Shape.circular(16),
-                shadowColor: themeData.colorScheme.primary.withOpacity(0.6),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: themeData.backgroundColor,
-                    borderRadius: Shape.circular(16),
-                  ),
-                  padding: Spacing.vertical(12),
-                  child: TabBar(
-                    controller: _tabController,
-                    indicator: const BoxDecoration(),
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    // indicatorColor: AppTheme.customTheme.groceryPrimary,
-                    tabs: <Widget>[
-                      Container(
-                        child: (_currentIndex == 0)
-                            ? Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    "Users",
-                                    style: AppTheme.getTextStyle(
-                                        themeData.textTheme.titleMedium,
-                                        fontWeight: 600,
-                                        color: themeData.colorScheme.primary),
-                                  ),
-                                  Container(
-                                    margin: Spacing.top(6),
-                                    decoration: BoxDecoration(
-                                      color: themeData.colorScheme.primary,
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(2.5),
-                                      ),
-                                    ),
-                                    height: 5,
-                                    width: 5,
-                                  )
-                                ],
-                              )
-                            : Icon(
-                                MdiIcons.account,
-                                size: 20,
-                                color: Theme.of(context).colorScheme.primary,
-                              ),
+            top: 40,
+            right: 16,
+            left: 16,
+            child: Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Padding(
+                padding: Spacing.xy(12, 8),
+                child: Row(
+                  children: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        size: 24,
+                        color:
+                            themeData.colorScheme.onBackground.withAlpha(240),
                       ),
-                      Container(
-                        child: (_currentIndex == 1)
-                            ? Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    "Requests",
-                                    style: AppTheme.getTextStyle(
-                                        themeData.textTheme.titleMedium,
-                                        fontWeight: 600,
-                                        color: themeData.colorScheme.primary),
-                                  ),
-                                  Container(
-                                    margin: Spacing.top(6),
-                                    decoration: BoxDecoration(
-                                      color: themeData.colorScheme.primary,
-                                      borderRadius: const BorderRadius.all(
-                                        Radius.circular(2.5),
-                                      ),
-                                    ),
-                                    height: 5,
-                                    width: 5,
-                                  )
-                                ],
-                              )
-                            : Icon(
-                                MdiIcons.accountClock,
-                                size: 20,
-                                color: themeData.primaryColor,
-                              ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Padding(
+                        padding: Spacing.fromLTRB(16, 0, 8, 0),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                              fillColor: Colors.transparent,
+                              hintText: "Search Users",
+                              border: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                              disabledBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                              isDense: true),
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    GestureDetector(
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdminUsersCreate())),
+                      child: Icon(
+                        MdiIcons.plusCircle,
+                        size: 24,
+                        color:
+                            themeData.colorScheme.onBackground.withAlpha(240),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          )
+          ),
         ],
       ),
     );

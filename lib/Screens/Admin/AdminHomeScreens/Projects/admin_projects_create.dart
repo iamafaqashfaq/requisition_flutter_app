@@ -20,57 +20,6 @@ class _AdminProjectsCreateState extends State<AdminProjectsCreate> {
     super.initState();
   }
 
-  addApprovers() {
-    approvers.add(
-      const Center(child: Icon(MdiIcons.arrowDown)),
-    );
-
-    approvers.add(
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: TextFormField(
-          style: AppTheme.getTextStyle(Theme.of(context).textTheme.bodyText1,
-              letterSpacing: 0.1,
-              color: Theme.of(context).colorScheme.onBackground,
-              fontWeight: 500),
-          decoration: InputDecoration(
-            hintText: "Approver Email",
-            hintStyle: AppTheme.getTextStyle(
-                Theme.of(context).textTheme.subtitle2,
-                letterSpacing: 0.1,
-                color: Theme.of(context).colorScheme.onBackground,
-                fontWeight: 500),
-            border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8.0),
-                ),
-                borderSide: BorderSide.none),
-            enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8.0),
-                ),
-                borderSide: BorderSide.none),
-            focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(8.0),
-                ),
-                borderSide: BorderSide.none),
-            filled: true,
-            fillColor: Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-            prefixIcon: const Icon(
-              MdiIcons.email,
-            ),
-            contentPadding: const EdgeInsets.all(0),
-          ),
-          keyboardType: TextInputType.emailAddress,
-          textCapitalization: TextCapitalization.sentences,
-        ),
-      ),
-    );
-
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
@@ -95,195 +44,53 @@ class _AdminProjectsCreateState extends State<AdminProjectsCreate> {
               Container(
                 margin: EdgeInsets.only(top: MySize.size16!),
                 child: TextFormField(
-                  style: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.bodyText1,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
                   decoration: InputDecoration(
-                    hintText: "Project",
-                    hintStyle: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.subtitle2,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    filled: true,
-                    fillColor: Theme.of(context)
-                        .colorScheme
-                        .secondary
-                        .withOpacity(0.2),
+                    labelText: "Description",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
                     prefixIcon: const Icon(
                       MdiIcons.briefcase,
+                      size: 24,
                     ),
-                    contentPadding: const EdgeInsets.all(0),
                   ),
-                  onChanged: (value) => setState(() {}),
-                  textCapitalization: TextCapitalization.sentences,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: MySize.size16!),
                 child: TextFormField(
-                  style: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.bodyText1,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
                   decoration: InputDecoration(
-                    hintText: "Type",
-                    hintStyle: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.subtitle2,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    filled: true,
-                    fillColor: Theme.of(context)
-                        .colorScheme
-                        .secondary
-                        .withOpacity(0.2),
+                    labelText: "Type",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
                     prefixIcon: const Icon(
-                      MdiIcons.formatQuoteClose,
+                      MdiIcons.formatQuoteOpen,
+                      size: 24,
                     ),
-                    contentPadding: const EdgeInsets.all(0),
                   ),
-                  keyboardType: TextInputType.emailAddress,
-                  textCapitalization: TextCapitalization.sentences,
                 ),
               ),
               Container(
                 margin: EdgeInsets.only(top: MySize.size16!),
                 child: TextFormField(
                   maxLines: 4,
-                  style: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.bodyText1,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
                   decoration: InputDecoration(
-                    // contentPadding: const EdgeInsets.all(0),
-                    isDense: true,
-                    hintText: "Description",
-                    hintStyle: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.subtitle2,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    filled: true,
-                    fillColor: Theme.of(context)
-                        .colorScheme
-                        .secondary
-                        .withOpacity(0.2),
-                    prefixIcon: const Icon(
-                      MdiIcons.formatBold,
-                    ),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  textCapitalization: TextCapitalization.sentences,
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: MySize.size16!),
-                child: Text(
-                  "Approver Flow",
-                  style: AppTheme.getTextStyle(
-                    themeData.textTheme.bodyLarge,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: TextFormField(
-                  style: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.bodyText1,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
-                  decoration: InputDecoration(
-                    hintText: "Approver Email",
-                    hintStyle: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.subtitle2,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    enabledBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    focusedBorder: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8.0),
-                        ),
-                        borderSide: BorderSide.none),
-                    filled: true,
-                    fillColor: Theme.of(context)
-                        .colorScheme
-                        .secondary
-                        .withOpacity(0.2),
+                    labelText: "Description",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
                     prefixIcon: const Icon(
                       MdiIcons.email,
+                      size: 24,
                     ),
-                    contentPadding: const EdgeInsets.all(0),
                   ),
-                  keyboardType: TextInputType.emailAddress,
-                  textCapitalization: TextCapitalization.sentences,
-                ),
-              ),
-              ...approvers,
-              Center(
-                child: IconButton(
-                  icon: const Icon(MdiIcons.plusCircle),
-                  onPressed: addApprovers,
                 ),
               ),
               Row(

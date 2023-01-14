@@ -73,140 +73,57 @@ class AdminUsersDetails extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.only(top: MySize.size16!),
                   child: TextFormField(
-                    enabled: false,
-                    style: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.bodyText1,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    decoration: InputDecoration(
-                      hintText: "Name",
-                      hintStyle: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.subtitle2,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
-                      prefixIcon: const Icon(
-                        MdiIcons.accountOutline,
-                      ),
-                      contentPadding: const EdgeInsets.all(0),
-                    ),
                     controller: TextEditingController(text: data.name),
-                    textCapitalization: TextCapitalization.sentences,
+                    decoration: InputDecoration(
+                      labelText: "Name",
+                      border: Theme.of(context).inputDecorationTheme.border,
+                      enabledBorder:
+                          Theme.of(context).inputDecorationTheme.border,
+                      focusedBorder:
+                          Theme.of(context).inputDecorationTheme.focusedBorder,
+                      prefixIcon: const Icon(
+                        MdiIcons.email,
+                        size: 24,
+                      ),
+                    ),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: MySize.size16!),
                   child: TextFormField(
-                    enabled: false,
-                    style: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.bodyText1,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
-                    decoration: InputDecoration(
-                      hintText: "Email",
-                      hintStyle: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.subtitle2,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
-                      prefixIcon: const Icon(
-                        MdiIcons.emailOutline,
-                      ),
-                      contentPadding: const EdgeInsets.all(0),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
                     controller: TextEditingController(
                         text:
                             "${data.name.toString().replaceAll(" ", "").toLowerCase()}@gmail.com"),
-                    textCapitalization: TextCapitalization.sentences,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                      border: Theme.of(context).inputDecorationTheme.border,
+                      enabledBorder:
+                          Theme.of(context).inputDecorationTheme.border,
+                      focusedBorder:
+                          Theme.of(context).inputDecorationTheme.focusedBorder,
+                      prefixIcon: const Icon(
+                        MdiIcons.email,
+                        size: 24,
+                      ),
+                    ),
                   ),
                 ),
                 Container(
                   margin: EdgeInsets.only(top: MySize.size16!),
                   child: TextFormField(
-                    enabled: false,
-                    style: AppTheme.getTextStyle(
-                        Theme.of(context).textTheme.bodyText1,
-                        letterSpacing: 0.1,
-                        color: Theme.of(context).colorScheme.onBackground,
-                        fontWeight: 500),
+                    initialValue: "39459343545",
                     decoration: InputDecoration(
-                      hintText: "Phone",
-                      hintStyle: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.subtitle2,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      enabledBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      focusedBorder: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(8.0),
-                          ),
-                          borderSide: BorderSide.none),
-                      filled: true,
-                      fillColor: Theme.of(context)
-                          .colorScheme
-                          .secondary
-                          .withOpacity(0.2),
+                      labelText: "Phone",
+                      border: Theme.of(context).inputDecorationTheme.border,
+                      enabledBorder:
+                          Theme.of(context).inputDecorationTheme.border,
+                      focusedBorder:
+                          Theme.of(context).inputDecorationTheme.focusedBorder,
                       prefixIcon: const Icon(
-                        MdiIcons.phoneOutline,
+                        MdiIcons.phone,
+                        size: 24,
                       ),
-                      contentPadding: const EdgeInsets.all(0),
                     ),
-                    keyboardType: TextInputType.emailAddress,
-                    textCapitalization: TextCapitalization.sentences,
-                    controller: TextEditingController(text: data.number),
                   ),
                 ),
                 Row(

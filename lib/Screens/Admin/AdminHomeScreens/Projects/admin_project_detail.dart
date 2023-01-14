@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:requisition_app/CustomWidgets/sizeconfig.dart';
+import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Projects/admin_project_form_approval.dart';
 import 'package:requisition_app/Utils/app_theme.dart';
 
 class AdminProjectDetail extends StatefulWidget {
@@ -19,40 +20,48 @@ class _AdminProjectDetailState extends State<AdminProjectDetail> {
     'Form 3',
     'Form 4',
   ];
-  _generateGridItems() {
+  _generateGridItems(context) {
     List<Widget> list = [];
     for (int i = 0; i < formList.length; i++) {
       list.add(
-        Container(
-          padding: Spacing.all(2),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(
-              12,
-            ),
-            boxShadow: const [
-              BoxShadow(
-                blurRadius: 2,
-                spreadRadius: 1,
-                offset: Offset(1, 1),
+        InkWell(
+          onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return const AdminProjectFormApproval();
+            }));
+          },
+          child: Container(
+            padding: Spacing.all(2),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: BorderRadius.circular(
+                6,
               ),
-            ],
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                MdiIcons.formTextbox,
-                color: Theme.of(context).colorScheme.onPrimary,
-              ),
-              Text(
-                formList[i],
-                style: AppTheme.getTextStyle(
-                  Theme.of(context).textTheme.subtitle1,
-                  color: Theme.of(context).colorScheme.onPrimary,
+              boxShadow: const [
+                BoxShadow(
+                  blurRadius: 1,
+                  spreadRadius: 0.1,
+                  offset: Offset(0.9, 0.9),
+                  color: Colors.black87,
                 ),
-              ),
-            ],
+              ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  MdiIcons.formTextbox,
+                  color: Theme.of(context).colorScheme.onBackground,
+                ),
+                Text(
+                  formList[i],
+                  style: AppTheme.getTextStyle(
+                    Theme.of(context).textTheme.subtitle1,
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       );
@@ -112,224 +121,41 @@ class _AdminProjectDetailState extends State<AdminProjectDetail> {
             ),
             Container(
               margin: EdgeInsets.only(top: MySize.size16!),
-              child: TextFormField(
-                initialValue:
-                    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
-                maxLines: 4,
-                style: AppTheme.getTextStyle(
-                    Theme.of(context).textTheme.bodyText1,
-                    letterSpacing: 0.1,
-                    color: Theme.of(context).colorScheme.onBackground,
-                    fontWeight: 500),
-                decoration: InputDecoration(
-                  // contentPadding: const EdgeInsets.all(0),
-                  isDense: true,
-                  hintText: "Description",
-                  hintStyle: AppTheme.getTextStyle(
-                      Theme.of(context).textTheme.subtitle2,
-                      letterSpacing: 0.1,
-                      color: Theme.of(context).colorScheme.onBackground,
-                      fontWeight: 500),
-                  border: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  enabledBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  focusedBorder: const OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(8.0),
-                      ),
-                      borderSide: BorderSide.none),
-                  filled: true,
-                  fillColor:
-                      Theme.of(context).colorScheme.secondary.withOpacity(0.2),
-                  prefixIcon: const Icon(
-                    MdiIcons.formatBold,
+              child: Container(
+                margin: EdgeInsets.only(top: MySize.size16!),
+                child: TextFormField(
+                  maxLines: 4,
+                  initialValue:
+                      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. ",
+                  decoration: InputDecoration(
+                    labelText: "Description",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                    prefixIcon: const Icon(
+                      MdiIcons.email,
+                      size: 24,
+                    ),
                   ),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                textCapitalization: TextCapitalization.sentences,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: Text(
-                "Approver Flow",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.bodyLarge,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: TextFormField(
-                      initialValue: "priyabajaj@gmail.com",
-                      style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        hintText: "Approver Email",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: const Icon(
-                          MdiIcons.email,
-                        ),
-                        contentPadding: const EdgeInsets.all(0),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      textCapitalization: TextCapitalization.sentences,
+                  Text(
+                    "Attached Forms",
+                    style: AppTheme.getTextStyle(
+                      themeData.textTheme.bodyLarge,
                     ),
                   ),
+                  const Icon(MdiIcons.plusCircle)
                 ],
-              ),
-            ),
-            const Center(child: Icon(MdiIcons.arrowDown)),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      initialValue: "vinay@gmail.com",
-                      style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        hintText: "Approver Email",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: const Icon(
-                          MdiIcons.email,
-                        ),
-                        contentPadding: const EdgeInsets.all(0),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      textCapitalization: TextCapitalization.sentences,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Center(child: Icon(MdiIcons.arrowDown)),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: TextFormField(
-                      initialValue: "afaq@gmail.com",
-                      style: AppTheme.getTextStyle(
-                          Theme.of(context).textTheme.bodyText1,
-                          letterSpacing: 0.1,
-                          color: Theme.of(context).colorScheme.onBackground,
-                          fontWeight: 500),
-                      decoration: InputDecoration(
-                        hintText: "Approver Email",
-                        hintStyle: AppTheme.getTextStyle(
-                            Theme.of(context).textTheme.subtitle2,
-                            letterSpacing: 0.1,
-                            color: Theme.of(context).colorScheme.onBackground,
-                            fontWeight: 500),
-                        border: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        enabledBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        focusedBorder: const OutlineInputBorder(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(8.0),
-                            ),
-                            borderSide: BorderSide.none),
-                        filled: true,
-                        fillColor: Theme.of(context)
-                            .colorScheme
-                            .secondary
-                            .withOpacity(0.2),
-                        prefixIcon: const Icon(
-                          MdiIcons.email,
-                        ),
-                        contentPadding: const EdgeInsets.all(0),
-                      ),
-                      keyboardType: TextInputType.emailAddress,
-                      textCapitalization: TextCapitalization.sentences,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: Text(
-                "Attached Forms",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.bodyLarge,
-                ),
               ),
             ),
             Container(
@@ -342,7 +168,7 @@ class _AdminProjectDetailState extends State<AdminProjectDetail> {
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
                 ),
-                children: _generateGridItems(),
+                children: _generateGridItems(context),
               ),
             )
           ],
