@@ -26,7 +26,7 @@ class _LoginState extends State<Login> {
             clipper: _MyCustomClipper(context),
             child: Container(
               alignment: Alignment.center,
-              color: themeData.colorScheme.secondary,
+              color: themeData.colorScheme.primary,
             ),
           ),
           Positioned(
@@ -100,26 +100,6 @@ class _LoginState extends State<Login> {
                                     ),
                                   ),
                                   obscureText: _passwordVisible!,
-                                ),
-                              ),
-                              Container(
-                                margin: const EdgeInsets.only(top: 16),
-                                child: TextFormField(
-                                  style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText1,
-                                      letterSpacing: 0.1,
-                                      color: themeData.colorScheme.onBackground,
-                                      fontWeight: 500),
-                                  decoration: InputDecoration(
-                                    hintText: "Company Code",
-                                    hintStyle: AppTheme.getTextStyle(
-                                        themeData.textTheme.subtitle2,
-                                        letterSpacing: 0.1,
-                                        color:
-                                            themeData.colorScheme.onBackground,
-                                        fontWeight: 500),
-                                    prefixIcon: const Icon(MdiIcons.link),
-                                  ),
                                 ),
                               ),
                               Container(
@@ -214,7 +194,7 @@ class _LoginState extends State<Login> {
                                   themeData.textTheme.bodyText2,
                                   fontWeight: 500)),
                           TextSpan(
-                              text: " Register",
+                              text: " Request Access",
                               style: AppTheme.getTextStyle(
                                   themeData.textTheme.bodyText2,
                                   fontWeight: 600,

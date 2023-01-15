@@ -25,7 +25,7 @@ class _RegisterState extends State<Register> {
               clipper: _MyCustomClipper(context),
               child: Container(
                 alignment: Alignment.center,
-                color: themeData.colorScheme.secondary,
+                color: themeData.colorScheme.primary,
               )),
           Positioned(
             left: MySize.size30,
@@ -42,7 +42,7 @@ class _RegisterState extends State<Register> {
                         Container(
                           margin: EdgeInsets.only(top: MySize.size8!),
                           child: Text(
-                            "REGISTER",
+                            "REQUEST ACCESS",
                             style: AppTheme.getTextStyle(
                                 themeData.textTheme.headline6,
                                 fontWeight: 600),
@@ -147,26 +147,6 @@ class _RegisterState extends State<Register> {
                                 ),
                               ),
                               Container(
-                                margin: const EdgeInsets.only(top: 16),
-                                child: TextFormField(
-                                  style: AppTheme.getTextStyle(
-                                      themeData.textTheme.bodyText1,
-                                      letterSpacing: 0.1,
-                                      color: themeData.colorScheme.onBackground,
-                                      fontWeight: 500),
-                                  decoration: InputDecoration(
-                                    hintText: "Company Code",
-                                    hintStyle: AppTheme.getTextStyle(
-                                        themeData.textTheme.subtitle2,
-                                        letterSpacing: 0.1,
-                                        color:
-                                            themeData.colorScheme.onBackground,
-                                        fontWeight: 500),
-                                    prefixIcon: const Icon(MdiIcons.link),
-                                  ),
-                                ),
-                              ),
-                              Container(
                                   margin: EdgeInsets.only(top: MySize.size24!),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.all(
@@ -185,7 +165,7 @@ class _RegisterState extends State<Register> {
                                           padding: MaterialStateProperty.all(
                                               Spacing.xy(16, 0))),
                                       onPressed: () {},
-                                      child: Text("REGISTER",
+                                      child: Text("Request Access",
                                           style: AppTheme.getTextStyle(
                                               themeData.textTheme.button,
                                               fontWeight: 600,

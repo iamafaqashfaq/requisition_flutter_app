@@ -137,6 +137,14 @@ class _AdminUsersHomeState extends State<AdminUsersHome>
           )
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const AdminUsersCreate())),
+        backgroundColor: themeData.colorScheme.primary,
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
       body: Stack(
         children: [
           Container(
@@ -154,6 +162,7 @@ class _AdminUsersHomeState extends State<AdminUsersHome>
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
+              color: Colors.grey.shade200,
               child: Padding(
                 padding: Spacing.xy(12, 8),
                 child: Row(
@@ -185,18 +194,6 @@ class _AdminUsersHomeState extends State<AdminUsersHome>
                               focusedErrorBorder: InputBorder.none,
                               isDense: true),
                         ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const AdminUsersCreate())),
-                      child: Icon(
-                        MdiIcons.plusCircle,
-                        size: 24,
-                        color:
-                            themeData.colorScheme.onBackground.withAlpha(240),
                       ),
                     ),
                   ],

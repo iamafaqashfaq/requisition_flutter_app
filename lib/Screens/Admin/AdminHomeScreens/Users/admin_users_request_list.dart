@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:requisition_app/CustomWidgets/sizeconfig.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_details.dart';
 import 'package:requisition_app/Utils/app_theme.dart';
 
@@ -23,7 +22,6 @@ class AdminUsersRequestList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: Spacing.bottom(80),
       color: Theme.of(context).backgroundColor,
       child: ListView.builder(
         padding: const EdgeInsets.all(0),
@@ -36,7 +34,7 @@ class AdminUsersRequestList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   child: Text(_contactList[index].name[0],
                       style: AppTheme.getTextStyle(
                           Theme.of(context).textTheme.subtitle1,

@@ -32,7 +32,7 @@ class _AdminProfileHomeState extends State<AdminProfileHome> {
                   //   shape: BoxShape.circle,
                   // ),
                   child: CircleAvatar(
-                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
                     child: Text("A",
                         style: AppTheme.getTextStyle(
                             Theme.of(context).textTheme.headline1,
@@ -61,6 +61,21 @@ class _AdminProfileHomeState extends State<AdminProfileHome> {
                 singleOption(
                     iconData: MdiIcons.creditCardOutline,
                     option: "Subscriptions",
+                    navigation: null),
+                const Divider(),
+                singleOption(
+                    iconData: MdiIcons.bellRing,
+                    option: "Notification",
+                    navigation: null),
+                const Divider(),
+                singleOption(
+                    iconData: MdiIcons.eye,
+                    option: "Appearance",
+                    navigation: null),
+                const Divider(),
+                singleOption(
+                    iconData: MdiIcons.lock,
+                    option: "Privacy & Security",
                     navigation: null),
                 const Divider(),
                 singleOption(

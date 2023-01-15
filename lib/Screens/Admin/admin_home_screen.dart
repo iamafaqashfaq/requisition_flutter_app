@@ -3,10 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:requisition_app/CustomWidgets/sizeconfig.dart';
-import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Forms/admin_forms_home.dart';
+import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Forms/admin_forms_create.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Profile/admin_profile_home.dart';
-import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Projects/admin_projects_home.dart';
-import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_home.dart';
+import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Projects/admin_projects_create.dart';
+import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Users/admin_users_create.dart';
 import 'package:requisition_app/Screens/Admin/Dashboard/admin_dashboard_grid.dart';
 import 'package:requisition_app/Utils/app_theme.dart';
 
@@ -102,12 +102,24 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
         centerTitle: true,
         backgroundColor: Colors.transparent,
       ),
-      body: Opacity(
-        opacity: _contentOpacity,
-        child: Container(
-          child: _currentIndex == 0
-              ? const AdminDashboardGrid()
-              : const AdminProfileHome(),
+      body: GestureDetector(
+        onTap: () {
+          if (_controller.isCompleted) {
+            setState(() {
+              _contentOpacity = 1;
+            });
+            _controller.reverse();
+          }
+        },
+        child: Opacity(
+          opacity: _contentOpacity,
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height -
+                AppBar().preferredSize.height,
+            child: _currentIndex == 0
+                ? const AdminDashboardGrid()
+                : const AdminProfileHome(),
+          ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -157,11 +169,11 @@ class _AdminHomeScreenState extends State<AdminHomeScreen>
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                             if (index == 0) {
-                              return const AdminUsersHome();
+                              return const AdminUsersCreate();
                             } else if (index == 1) {
-                              return const AdminProjectsHome();
+                              return const AdminProjectsCreate();
                             } else {
-                              return const AdminFormsHome();
+                              return const AdminFormsCreate();
                             }
                           }));
                         },

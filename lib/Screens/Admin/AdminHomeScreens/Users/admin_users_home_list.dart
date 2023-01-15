@@ -37,7 +37,7 @@ class AdminUsersHomeList extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 CircleAvatar(
-                  backgroundColor: Theme.of(context).colorScheme.secondary,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
                   child: Text(_contactList[index].name[0],
                       style: AppTheme.getTextStyle(
                           Theme.of(context).textTheme.subtitle1,

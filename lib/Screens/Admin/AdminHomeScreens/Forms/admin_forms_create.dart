@@ -17,100 +17,102 @@ class _AdminFormsCreateState extends State<AdminFormsCreate> {
 
   List<Widget> formFieldWidgets = [];
 
-  addFormFieldWidget() {
-    formFieldWidgets.add(Card(
-      child: Container(
-        margin: Spacing.only(
-          top: 8,
-          bottom: 8,
-        ),
-        padding: Spacing.only(
-          top: 16,
-          bottom: 16,
-          left: 8,
-          right: 8,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Question:",
-              style: AppTheme.getTextStyle(
-                themeData.textTheme.titleMedium,
+  addFormFieldWidget(type) {
+    formFieldWidgets.add(
+      Card(
+        elevation: 12,
+        child: Container(
+          padding: Spacing.only(
+            top: 16,
+            bottom: 16,
+            left: 8,
+            right: 8,
+          ),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: themeData.colorScheme.primary,
+                width: MySize.size8!,
               ),
             ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: TextFormField(
-                maxLines: 4,
-                decoration: InputDecoration(
-                  labelText: "Enter Question Here",
-                  border: Theme.of(context).inputDecorationTheme.border,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
-                  focusedBorder:
-                      Theme.of(context).inputDecorationTheme.focusedBorder,
-                  prefixIcon: const Icon(
-                    Icons.question_mark,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: Spacing.top(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Question Type: $type",
+                      style: AppTheme.getTextStyle(
+                        themeData.textTheme.titleMedium,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        if (formFieldWidgets.isNotEmpty) {
+                          formFieldWidgets.removeLast();
+                          setState(() {});
+                        }
+                      },
+                      child: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              Container(
+                margin: EdgeInsets.only(top: MySize.size16!),
+                child: TextFormField(
+                  maxLines: 4,
+                  decoration: InputDecoration(
+                    labelText: "Enter Question Here",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                    prefixIcon: const Icon(
+                      Icons.question_mark,
+                    ),
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Answer Label (Optional):",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.titleMedium,
-                ),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: MySize.size16!),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Answer Label",
-                  border: Theme.of(context).inputDecorationTheme.border,
-                  enabledBorder: Theme.of(context).inputDecorationTheme.border,
-                  focusedBorder:
-                      Theme.of(context).inputDecorationTheme.focusedBorder,
-                  prefixIcon: const Icon(
-                    MdiIcons.label,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Text(
+                  "Answer Label (Optional):",
+                  style: AppTheme.getTextStyle(
+                    themeData.textTheme.titleMedium,
                   ),
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                "Answer Type:",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.titleMedium,
-                ),
-              ),
-            ),
-            Container(
-              decoration: const BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: Colors.black87,
+              Container(
+                margin: EdgeInsets.only(top: MySize.size16!),
+                child: TextFormField(
+                  decoration: InputDecoration(
+                    labelText: "Answer Label",
+                    border: Theme.of(context).inputDecorationTheme.border,
+                    enabledBorder:
+                        Theme.of(context).inputDecorationTheme.border,
+                    focusedBorder:
+                        Theme.of(context).inputDecorationTheme.focusedBorder,
+                    prefixIcon: const Icon(
+                      MdiIcons.label,
+                    ),
                   ),
                 ),
               ),
-              child: DropdownButton(
-                  isExpanded: true,
-                  items: dataTypes
-                      .map((e) => DropdownMenuItem(
-                            value: e,
-                            child: Text(e),
-                          ))
-                      .toList(),
-                  onChanged: (value) {}),
-            )
-          ],
+            ],
+          ),
         ),
       ),
-    ));
+    );
     setState(() {});
   }
 
@@ -127,16 +129,6 @@ class _AdminFormsCreateState extends State<AdminFormsCreate> {
           ),
         ),
         backgroundColor: themeData.colorScheme.primary,
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              MdiIcons.contentSave,
-            ),
-          )
-        ],
       ),
       body: Padding(
         padding: Spacing.horizontal(
@@ -202,18 +194,94 @@ class _AdminFormsCreateState extends State<AdminFormsCreate> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: Spacing.only(top: 8),
-                  child: IconButton(
-                    onPressed: addFormFieldWidget,
-                    icon: const Icon(
-                      MdiIcons.plusCircle,
-                    ),
+                PopupMenuButton(
+                  child: const Icon(
+                    MdiIcons.plusCircle,
                   ),
-                )
+                  onSelected: (value) {
+                    addFormFieldWidget(value);
+                  },
+                  itemBuilder: (BuildContext context) {
+                    return dataTypes.map((String choice) {
+                      return PopupMenuItem(
+                        value: choice,
+                        child: Text(choice),
+                      );
+                    }).toList();
+                  },
+                ),
               ],
             ),
             ...formFieldWidgets,
+            SizedBox(
+              height: MySize.size50,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  margin: EdgeInsets.only(top: MySize.size24!),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(MySize.size8!)),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Theme.of(context).colorScheme.primary.withAlpha(20),
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(
+                          Spacing.xy(16, 0),
+                        ),
+                        backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).colorScheme.error,
+                        ),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Cancel",
+                          style: AppTheme.getTextStyle(
+                              Theme.of(context).textTheme.button,
+                              fontWeight: 600,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              letterSpacing: 0.3))),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: MySize.size24!),
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(MySize.size8!)),
+                    boxShadow: [
+                      BoxShadow(
+                        color:
+                            Theme.of(context).colorScheme.primary.withAlpha(20),
+                        blurRadius: 3,
+                        offset: const Offset(0, 1),
+                      ),
+                    ],
+                  ),
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          padding:
+                              MaterialStateProperty.all(Spacing.xy(16, 0))),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text("Create",
+                          style: AppTheme.getTextStyle(
+                              Theme.of(context).textTheme.button,
+                              fontWeight: 600,
+                              color: Theme.of(context).colorScheme.onPrimary,
+                              letterSpacing: 0.3))),
+                ),
+              ],
+            ),
           ],
         ),
       ),

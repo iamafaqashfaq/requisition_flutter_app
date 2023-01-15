@@ -82,7 +82,7 @@ class AdminUsersDetails extends StatelessWidget {
                       focusedBorder:
                           Theme.of(context).inputDecorationTheme.focusedBorder,
                       prefixIcon: const Icon(
-                        MdiIcons.email,
+                        MdiIcons.at,
                         size: 24,
                       ),
                     ),

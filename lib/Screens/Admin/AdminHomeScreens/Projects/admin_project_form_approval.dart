@@ -125,6 +125,15 @@ class _ListViewCard extends State<ListViewCard> {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
+          Container(
+            padding: Spacing.left(4),
+            child: Text(
+              "${widget.index + 1}",
+              style: AppTheme.getTextStyle(
+                theme.textTheme.bodyMedium,
+              ),
+            ),
+          ),
           Expanded(
             child: Column(
               mainAxisSize: MainAxisSize.min,

@@ -45,7 +45,7 @@ class _AdminProjectsCreateState extends State<AdminProjectsCreate> {
                 margin: EdgeInsets.only(top: MySize.size16!),
                 child: TextFormField(
                   decoration: InputDecoration(
-                    labelText: "Description",
+                    labelText: "Name",
                     border: Theme.of(context).inputDecorationTheme.border,
                     enabledBorder:
                         Theme.of(context).inputDecorationTheme.border,
@@ -87,7 +87,7 @@ class _AdminProjectsCreateState extends State<AdminProjectsCreate> {
                     focusedBorder:
                         Theme.of(context).inputDecorationTheme.focusedBorder,
                     prefixIcon: const Icon(
-                      MdiIcons.email,
+                      MdiIcons.formTextarea,
                       size: 24,
                     ),
                   ),

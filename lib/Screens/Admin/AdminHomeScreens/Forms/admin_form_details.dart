@@ -18,28 +18,51 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
 
   List<Widget> formFieldWidgets = [];
 
-  addFormFieldWidget() {
+  addFormFieldWidget(type) {
     formFieldWidgets.add(
       Card(
+        elevation: 12,
         child: Container(
-          margin: Spacing.only(
-            top: 8,
-            bottom: 8,
-          ),
           padding: Spacing.only(
-            top: 16,
-            bottom: 16,
             left: 8,
             right: 8,
+          ),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: themeData.colorScheme.primary,
+                width: MySize.size8!,
+              ),
+            ),
           ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Question:",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.titleMedium,
+              Padding(
+                padding: Spacing.top(8),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Question Type: $type",
+                      style: AppTheme.getTextStyle(
+                        themeData.textTheme.titleMedium,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        if (formFieldWidgets.isNotEmpty) {
+                          formFieldWidgets.removeLast();
+                          setState(() {});
+                        }
+                      },
+                      child: const Icon(
+                        Icons.delete,
+                        color: Colors.red,
+                      ),
+                    )
+                  ],
                 ),
               ),
               Container(
@@ -84,33 +107,6 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  "Answer Type:",
-                  style: AppTheme.getTextStyle(
-                    themeData.textTheme.titleMedium,
-                  ),
-                ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: Colors.black87,
-                    ),
-                  ),
-                ),
-                child: DropdownButton(
-                    isExpanded: true,
-                    items: dataTypes
-                        .map((e) => DropdownMenuItem(
-                              value: e,
-                              child: Text(e),
-                            ))
-                        .toList(),
-                    onChanged: (value) {}),
-              )
             ],
           ),
         ),
@@ -190,40 +186,6 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Projects",
-                  style: AppTheme.getTextStyle(
-                    themeData.textTheme.bodyLarge,
-                  ),
-                ),
-                const IconButton(
-                  onPressed: null,
-                  icon: Icon(
-                    MdiIcons.plusCircle,
-                  ),
-                )
-              ],
-            ),
-            Container(
-              padding: Spacing.only(
-                top: 36,
-                bottom: 36,
-                left: 8,
-                right: 8,
-              ),
-              decoration: BoxDecoration(
-                  color: Colors.grey.shade200,
-                  borderRadius: BorderRadius.circular(12)),
-              child: Text(
-                "This form is not attached to any project yet!",
-                style: AppTheme.getTextStyle(
-                  themeData.textTheme.subtitle1,
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
                 Container(
                   margin: EdgeInsets.only(top: MySize.size16!),
                   child: Text(
@@ -233,28 +195,38 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: Spacing.only(top: 8),
-                  child: IconButton(
-                    onPressed: addFormFieldWidget,
-                    icon: const Icon(
-                      MdiIcons.plusCircle,
-                    ),
+                PopupMenuButton(
+                  child: const Icon(
+                    MdiIcons.plusCircle,
                   ),
-                )
+                  onSelected: (value) {
+                    addFormFieldWidget(value);
+                  },
+                  itemBuilder: (BuildContext context) {
+                    return dataTypes.map((String choice) {
+                      return PopupMenuItem(
+                        value: choice,
+                        child: Text(choice),
+                      );
+                    }).toList();
+                  },
+                ),
               ],
             ),
             Card(
+              elevation: 12,
               child: Container(
-                margin: Spacing.only(
-                  top: 8,
-                  bottom: 8,
-                ),
                 padding: Spacing.only(
-                  top: 16,
-                  bottom: 16,
                   left: 8,
                   right: 8,
+                ),
+                decoration: BoxDecoration(
+                  border: Border(
+                    left: BorderSide(
+                      color: themeData.colorScheme.primary,
+                      width: MySize.size8!,
+                    ),
+                  ),
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -311,33 +283,6 @@ class _AdminFormDetailsState extends State<AdminFormDetails> {
                         ),
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: Text(
-                        "Answer Type:",
-                        style: AppTheme.getTextStyle(
-                          themeData.textTheme.titleMedium,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      decoration: const BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: Colors.black87,
-                          ),
-                        ),
-                      ),
-                      child: DropdownButton(
-                          isExpanded: true,
-                          items: dataTypes
-                              .map((e) => DropdownMenuItem(
-                                    value: e,
-                                    child: Text(e),
-                                  ))
-                              .toList(),
-                          onChanged: (value) {}),
-                    )
                   ],
                 ),
               ),

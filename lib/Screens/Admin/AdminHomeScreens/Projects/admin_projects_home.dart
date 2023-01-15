@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:requisition_app/CustomWidgets/sizeconfig.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Projects/admin_project_detail.dart';
 import 'package:requisition_app/Screens/Admin/AdminHomeScreens/Projects/admin_projects_create.dart';
@@ -27,25 +26,16 @@ class _AdminProjectsHomeState extends State<AdminProjectsHome> {
   Widget build(BuildContext context) {
     themeData = Theme.of(context);
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(
-      //     "Projects",
-      //     style: AppTheme.getTextStyle(
-      //       Theme.of(context).textTheme.titleLarge,
-      //       color: Theme.of(context).colorScheme.onPrimary,
-      //     ),
-      //   ),
-      //   backgroundColor: themeData.colorScheme.primary,
-      //   actions: [
-      //     IconButton(
-      //       onPressed: () => Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //               builder: (context) => const AdminProjectsCreate())),
-      //       icon: const Icon(MdiIcons.plusCircle),
-      //     ),
-      //   ],
-      // ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const AdminProjectsCreate())),
+        backgroundColor: themeData.colorScheme.primary,
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
       body: Stack(
         children: [
           Padding(
@@ -98,81 +88,93 @@ class _AdminProjectsHomeState extends State<AdminProjectsHome> {
                               ),
                             ],
                           ),
-                          child: Container(
-                            padding: Spacing.left(16),
-                            height: MySize.size76,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              // borderRadius: BorderRadius.circular(12),
-                              color: themeData.colorScheme.background,
-                              // boxShadow: const [
-                              //   BoxShadow(
-                              //     blurRadius: 6,
-                              //     offset: Offset(2, 3),
-                              //   ),
-                              // ],
-                              border: Border(
-                                bottom: BorderSide(
-                                  color: themeData.colorScheme.onBackground
-                                      .withOpacity(0.3),
+                          child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(context,
+                                  MaterialPageRoute(builder: (context) {
+                                return AdminProjectDetail(
+                                  project: e,
+                                );
+                              }));
+                            },
+                            child: Container(
+                              padding: Spacing.left(16),
+                              height: MySize.size76,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                // borderRadius: BorderRadius.circular(12),
+                                color: themeData.colorScheme.background,
+                                // boxShadow: const [
+                                //   BoxShadow(
+                                //     blurRadius: 6,
+                                //     offset: Offset(2, 3),
+                                //   ),
+                                // ],
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: themeData.colorScheme.onBackground
+                                        .withOpacity(0.3),
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Hero(
-                                  tag: e,
-                                  child: CircleAvatar(
-                                    backgroundColor:
-                                        themeData.colorScheme.primary,
-                                    radius: MySize.size30,
-                                    child: Text(
-                                      e[0],
-                                      style: AppTheme.getTextStyle(
-                                        themeData.textTheme.titleLarge,
-                                        color: themeData.colorScheme.onPrimary,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Hero(
+                                    tag: e,
+                                    child: CircleAvatar(
+                                      backgroundColor:
+                                          themeData.colorScheme.primary,
+                                      radius: MySize.size30,
+                                      child: Text(
+                                        e[0],
+                                        style: AppTheme.getTextStyle(
+                                          themeData.textTheme.titleLarge,
+                                          color:
+                                              themeData.colorScheme.onPrimary,
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(
-                                  width: MySize.size16,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: Text(
-                                          e,
-                                          style: AppTheme.getTextStyle(
-                                            themeData.textTheme.headline6,
-                                            color: themeData
-                                                .colorScheme.onBackground,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 8.0),
+                                  SizedBox(
+                                    width: MySize.size16,
+                                  ),
+                                  Expanded(
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
                                           child: Text(
-                                            "lorem ipsum",
+                                            e,
                                             style: AppTheme.getTextStyle(
-                                              themeData.textTheme.bodyMedium,
+                                              themeData.textTheme.headline6,
                                               color: themeData
                                                   .colorScheme.onBackground,
                                             ),
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 8.0),
+                                            child: Text(
+                                              "lorem ipsum",
+                                              style: AppTheme.getTextStyle(
+                                                themeData.textTheme.bodyMedium,
+                                                color: themeData
+                                                    .colorScheme.onBackground,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -191,6 +193,7 @@ class _AdminProjectsHomeState extends State<AdminProjectsHome> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
               ),
+              color: Colors.grey.shade200,
               child: Padding(
                 padding: Spacing.xy(12, 8),
                 child: Row(
@@ -222,19 +225,6 @@ class _AdminProjectsHomeState extends State<AdminProjectsHome> {
                               focusedErrorBorder: InputBorder.none,
                               isDense: true),
                         ),
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const AdminProjectsCreate())),
-                      child: Icon(
-                        MdiIcons.plusCircle,
-                        size: 24,
-                        color:
-                            themeData.colorScheme.onBackground.withAlpha(240),
                       ),
                     ),
                   ],

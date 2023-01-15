@@ -59,7 +59,7 @@ class _AuthCompanyCodeState extends State<AuthCompanyCode> {
                           right: MySize.size16!,
                         ),
                         child: Card(
-                          elevation: 8,
+                          elevation: 20,
                           child: Padding(
                             padding: EdgeInsets.all(MySize.size16!),
                             child: Column(
@@ -93,7 +93,7 @@ class _AuthCompanyCodeState extends State<AuthCompanyCode> {
                                             .withAlpha(28),
                                         blurRadius: 3,
                                         offset: const Offset(
-                                            0, 1), // changes position of shadow
+                                            1, 1), // changes position of shadow
                                       ),
                                     ],
                                   ),
